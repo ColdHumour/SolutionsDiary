@@ -1,0 +1,76 @@
+Open Labyrinth
+================
+
+task_OpenLabyrinth_
+
+.. _task_OpenLabyrinth: http://www.checkio.org/mission/open-labyrinth/
+
+The labyrinth has no walls, but bushes surround the path on each side. If a players move into a bush, they lose. The labyrinth is presented as a matrix (a list of lists): 1 is a bush and 0 is part of the path. The labyrinth's size is 12 x 12 and the outer cells are also bushes. Players start at cell (1,1). The exit is at cell (10,10). You need to find a route through the labyrinth. Players can move in only four directions--South (down [1,0]), North (up [-1,0]), East (right [0,1]), West (left [0, -1]). The route is described as a string consisting of different characters: "S"=South, "N"=North, "E"=East, and "W"=West.
+
+.. image:: ../image/OpenLabyrinth.png
+
+**Input:** A labyrinth map as a list of lists with 1 and 0.
+
+**Output:** The route as a string that contains "W", "E", "N" and "S".
+
+**Example:**
+
+.. code-block:: python
+
+    checkio([
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+        [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1],
+        [1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]])
+
+**Precondition:** 
+
+    | Outer cells are pits.
+    | len(labyrinth) == 12
+    | all(len(row) == 12 for row in labyrinth)
+
+**Solution:**
+
+.. code-block:: python
+
+    from collections import deque
+    ​
+    DIRS = {(0, -1): 'W', (0, 1): 'E', (-1, 0): 'N', (1, 0): 'S'}
+    ​
+    def get_neighbor(p, xlim, ylim, constraint):
+        f = lambda p: 0 <= p[0] < xlim and 0 <= p[1] < ylim and constraint(*p)
+        plist = [(p[0]-1, p[1]), (p[0]+1, p[1]), (p[0], p[1]-1), (p[0], p[1]+1)]
+        return filter(f, plist)
+    ​
+    def checkio(data):
+        xlim, ylim = len(data), len(data[0])
+        constraint = lambda i,j: data[i][j] == 0
+        
+        visited, to_search = {(1,1): (0,0)}, deque([(1,1)])
+        while to_search:
+            cur_p = to_search.popleft()
+            plist = get_neighbor(cur_p, xlim, ylim, constraint)
+            plist = [p for p in plist if p not in visited]
+            
+            if (10, 10) in plist:
+                visited[(10, 10)] = cur_p
+                break
+            
+            for p in plist:
+                visited[p] = cur_p
+            to_search += plist
+                
+        trace = [(10, 10)]    
+        while (1, 1) not in trace:
+            trace  = [visited[trace[0]]] + trace
+        
+        path = [(p[0]-trace[i][0], p[1]-trace[i][1]) for i,p in enumerate(trace[1:])]
+        return ''.join(DIRS[d] for d in path)

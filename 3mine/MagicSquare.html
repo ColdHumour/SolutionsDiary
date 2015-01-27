@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Magic Square &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Hexagon Spiral" href="HexagonSpiral.html" />
+    <link rel="prev" title="Repeating Decimals" href="RepeatingDecimals.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="RepeatingDecimals.html" title="Repeating Decimals"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="RepeatingDecimals.html"
+                        title="previous chapter">Repeating Decimals</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="HexagonSpiral.html"
+                        title="next chapter">Hexagon Spiral</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/3mine/MagicSquare.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="magic-square">
+<h1>Magic Square<a class="headerlink" href="#magic-square" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/magic-square/">task_MagicSquare</a></p>
+<p>In mathematics a magic square is an arrangement of numbers (integers in our case) in a square grid, where the numbers in each row, each column and the numbers in the forward and backward main diagonals, all sum up to the same number.</p>
+<img alt="../_images/MagicSquare.png" src="../_images/MagicSquare.png" />
+<p>You have been given an incomplete magic square (with a size from 3 to 5). With your coding skills, you must finish the square. It must be a normal magic square and contain integers from 1 to n2 without repeating. The square is presented as a list of lists with integers. Zero is used to mark an empty cell. You should return a completed magic square. The task may have multiple solutions.</p>
+<p><strong>Input:</strong> A partially filled magic square as a list of lists with integers.</p>
+<p><strong>Output:</strong> The completed magic square as a list of lists with integers.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">checkio</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="c">#must return [[2, 7, 6], [9, 5, 1], [4, 3, 8]]</span>
+
+<span class="n">checkio</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">]])</span>
+<span class="c"># answer [[1, 15, 14, 4], [12, 6, 7, 9], [8, 10, 11, 5], [13, 3, 2, 16]]</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">3 ≤ <a href="#id1"><span class="problematic" id="id2">|square|</span></a> ≤ 5</div>
+<div class="line">square_width == square_height</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">checkio</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+    <span class="n">magicsum</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">34</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">65</span><span class="p">}</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">magicsum</span> <span class="o">=</span> <span class="n">magicsum</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">decompose</span><span class="p">(</span><span class="n">square</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;rows&#39;</span><span class="p">:</span> <span class="n">square</span><span class="p">,</span> <span class="s">&#39;cols&#39;</span><span class="p">:[],</span> <span class="s">&#39;diag1&#39;</span><span class="p">:[],</span> <span class="s">&#39;diag2&#39;</span><span class="p">:[]}</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+            <span class="n">output</span><span class="p">[</span><span class="s">&#39;cols&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">square</span><span class="p">])</span>
+        <span class="n">output</span><span class="p">[</span><span class="s">&#39;diag1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">square</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span>
+        <span class="n">output</span><span class="p">[</span><span class="s">&#39;diag2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">square</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">dim</span><span class="o">-</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">output</span><span class="p">[</span><span class="s">&#39;rows&#39;</span><span class="p">],</span> <span class="n">output</span><span class="p">[</span><span class="s">&#39;cols&#39;</span><span class="p">],</span> <span class="n">output</span><span class="p">[</span><span class="s">&#39;diag1&#39;</span><span class="p">],</span> <span class="n">output</span><span class="p">[</span><span class="s">&#39;diag2&#39;</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="n">square</span><span class="p">):</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span> <span class="o">=</span> <span class="n">decompose</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">square</span><span class="p">[</span><span class="n">rows</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">r</span><span class="p">)][</span><span class="n">r</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">magicsum</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">square</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)][</span><span class="n">cols</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)]</span> <span class="o">=</span> <span class="n">magicsum</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">diag1</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">square</span><span class="p">[</span><span class="n">diag1</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)][</span><span class="n">diag1</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">magicsum</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">diag1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">diag2</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">square</span><span class="p">[</span><span class="n">diag2</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)][</span><span class="n">dim</span> <span class="o">-</span> <span class="n">diag2</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">magicsum</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">diag2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">square</span>
+
+    <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">square</span><span class="p">):</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">diag1</span><span class="p">,</span> <span class="n">diag2</span> <span class="o">=</span> <span class="n">decompose</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+        <span class="n">use</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+            <span class="n">use</span> <span class="o">+=</span> <span class="n">r</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">!=</span><span class="n">magicsum</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">use</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">use</span> <span class="k">if</span> <span class="n">n</span><span class="o">!=</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">use</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">use</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">!=</span><span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="mi">1</span><span class="o">&lt;=</span><span class="n">n</span><span class="o">&lt;=</span><span class="nb">len</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+            <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">!=</span><span class="n">magicsum</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">diag1</span> <span class="ow">and</span> <span class="nb">sum</span><span class="p">(</span><span class="n">diag1</span><span class="p">)</span><span class="o">!=</span><span class="n">magicsum</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">diag2</span> <span class="ow">and</span> <span class="nb">sum</span><span class="p">(</span><span class="n">diag2</span><span class="p">)</span><span class="o">!=</span><span class="n">magicsum</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">pngen</span><span class="p">(</span><span class="n">square</span><span class="p">):</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">square</span><span class="p">)</span>
+        <span class="n">plist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">nlist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">square</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+                    <span class="n">nlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">square</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">dim</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">plist</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="n">nlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">dim</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">nlist</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">plist</span><span class="o">==</span><span class="p">[]:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">plist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">nlist</span><span class="p">]</span>
+
+    <span class="n">banlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sqstack</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+    <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">sqold</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">sqstack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">pn</span> <span class="o">=</span> <span class="n">pngen</span><span class="p">(</span><span class="n">sqold</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pn</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fill</span><span class="p">(</span><span class="n">sqold</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">,</span> <span class="n">nlist</span> <span class="o">=</span> <span class="n">pn</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nlist</span><span class="p">:</span>
+            <span class="n">sqnew</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">sqold</span><span class="p">)</span>
+            <span class="n">sqnew</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">n</span>
+            <span class="k">if</span> <span class="n">sqnew</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">banlist</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="n">sqstack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">banlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sqold</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">ch</span> <span class="o">=</span> <span class="n">check</span><span class="p">(</span><span class="n">fill</span><span class="p">(</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sqnew</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">ch</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">fill</span><span class="p">(</span><span class="n">sqnew</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">ch</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">banlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sqnew</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sqstack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sqnew</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="RepeatingDecimals.html" title="Repeating Decimals"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Inside Block &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="SCIENTIFIC EXPEDITION" href="0toctree.html" />
+    <link rel="next" title="Digging Canal" href="DiggingCanal.html" />
+    <link rel="prev" title="Loading Cargo" href="LoadingCargo.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="DiggingCanal.html" title="Digging Canal"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="LoadingCargo.html" title="Loading Cargo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">SCIENTIFIC EXPEDITION</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="LoadingCargo.html"
+                        title="previous chapter">Loading Cargo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="DiggingCanal.html"
+                        title="next chapter">Digging Canal</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/4scientificExpedition/InsideBlock.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="inside-block">
+<h1>Inside Block<a class="headerlink" href="#inside-block" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/inside-block/">task_InsideBlock</a></p>
+<p>When it comes to city planning it&#8217;s import to understand the borders of various city structures. Parks, lakes or living blocks can be represented as closed polygon and can be described using cartesian coordinates on a map . We need functionality to determine is a point (a building or a tree) lies inside the structure.</p>
+<p>For the purpose of this mission, a city structure may be considered a polygon represented as a sequence of vertex coordinates on a plane or map. The vertices are connected sequentially with the last vertex in the list connecting to the first. We are given the coordinates of the point which we need to check. If the point of impact lies on the edge of the polygon then it may be considered inside it. For this mission, you need to determine whether the given point lies inside the polygon.</p>
+<img src="../_images/InsideBlock.svg" /><p>For example, on the left image you see a polygon which is described by ((2,1),(1,5),(5,7),(7,7),(7,2)) and the point at (2,7). The result is False.
+For the right image the point lies on the edge and gets counted as inside the polygon, making the result True.</p>
+<p><strong>Input:</strong> Two arguments. Polygon coordinates as a tuple of tuples with two integers each. A checking point coordinates as a tuple of two integers.</p>
+<p><strong>Output:</strong> Whatever the point inside the polygon or not as a boolean.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">is_inside</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="n">is_inside</span><span class="p">(((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">==</span> <span class="bp">False</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">all(x ≥ 0 and y ≥ 0 for x, y in polygon)</div>
+<div class="line">point[0] ≥ 0 and point[1] ≥ 0</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="k">def</span> <span class="nf">isClockwise</span><span class="p">(</span><span class="n">triangle</span><span class="p">):</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">triangle</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">inTriangle</span><span class="p">(</span><span class="n">triangle</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">triangle</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">C</span><span class="p">),</span> <span class="n">vector</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="n">denom</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x_num</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">denom</span><span class="p">:</span> <span class="k">return</span> <span class="ow">not</span> <span class="n">x_num</span>
+
+    <span class="n">x_coeff</span> <span class="o">=</span> <span class="n">x_num</span> <span class="o">/</span> <span class="n">denom</span>
+    <span class="n">y_coeff</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="n">denom</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">x_coeff</span><span class="o">&lt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">y_coeff</span><span class="o">&lt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">x_coeff</span><span class="o">+</span><span class="n">y_coeff</span><span class="o">&lt;=</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">is_inside</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">point</span><span class="p">):</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">polygon</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">A_ix</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">polygon</span><span class="p">[(</span><span class="n">A_ix</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">polygon</span><span class="p">)],</span> <span class="n">polygon</span><span class="p">[</span><span class="n">A_ix</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isClockwise</span><span class="p">((</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)):</span>
+        <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">A_ix</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="p">[</span><span class="n">A_ix</span><span class="p">:]</span> <span class="o">+</span> <span class="n">polygon</span><span class="p">[:</span><span class="n">A_ix</span><span class="p">]</span>
+
+    <span class="n">triangles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">tri</span><span class="p">,</span> <span class="n">remains</span> <span class="o">=</span> <span class="n">polygon</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">polygon</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">inTriangle</span><span class="p">(</span><span class="n">tri</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">remains</span><span class="p">)</span> <span class="ow">and</span> <span class="n">isClockwise</span><span class="p">(</span><span class="n">tri</span><span class="p">):</span>
+            <span class="n">triangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+            <span class="n">polygon</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tri</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">polygon</span> <span class="o">=</span> <span class="n">polygon</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">polygon</span><span class="p">[:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">triangles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">inTriangle</span><span class="p">(</span><span class="n">tri</span><span class="p">,</span> <span class="n">point</span><span class="p">)</span> <span class="k">for</span> <span class="n">tri</span> <span class="ow">in</span> <span class="n">triangles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="DiggingCanal.html" title="Digging Canal"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="LoadingCargo.html" title="Loading Cargo"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >SCIENTIFIC EXPEDITION</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

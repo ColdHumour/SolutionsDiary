@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hexagon Spiral &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Expected Dice" href="ExpectedDice.html" />
+    <link rel="prev" title="Magic Square" href="MagicSquare.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="MagicSquare.html" title="Magic Square"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="MagicSquare.html"
+                        title="previous chapter">Magic Square</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ExpectedDice.html"
+                        title="next chapter">Expected Dice</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/3mine/HexagonSpiral.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hexagon-spiral">
+<h1>Hexagon Spiral<a class="headerlink" href="#hexagon-spiral" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/hexagon-spiral/">task_HexagonSpiral</a></p>
+<p>Bees are very well organized insects. Let&#8217;s suppose that bees have numerical ordering system for their honeycomb. If each cell in the honeycomb is hexagon and the bees want to build an accurate honeycomb then one method the could use to build it is to build in a spiraling pattern. This would mean that the numerical order is also in a spiral. That way each cell has own number and we have navigation system on the honeycomb. For this mission, we will need to account for that information while we define the distance between specific cells.</p>
+<p>The map of the honeycomb consists of a collection of hexagonal elements. The first element in the center is marked as 1 and in a continuing clockwise spiral, the rest of the elements are marked in ascending order ad infinitum. On this map, you can &#8220;move&#8221; through the adjoining edges of the hexagonal elements to place yourself in a neighboring cell.</p>
+<img src="../_images/HexagonSpiral.svg" /><p>For example: the distance between elements 1 and 9 is two moves and the distance between 8 and 18 is two move. Between 17 and 13 - 4 moves.</p>
+<p><strong>Input:</strong> Pair of numbers that represent 2 elements as integers.</p>
+<p><strong>Output:</strong> The distance between the 2 elements as an integer.</p>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">all(0 &lt; x &lt; 1000 for x in args)</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre># return amount of cells when there are i layers
+def f(i):
+    return 3*i*(i+1) + 1
+​
+# return layer # and index in the layer if count clockwisely from 1,7,19,37
+def get_coordinate(n):
+    if n==1: return 0,0
+
+    i = 1
+    while n &gt; f(i):
+        i += 1
+    return i, (n-f(i-1))%(6*i)
+​
+# return cells which 1 cell away from (i,j)
+def get_neighbor((i,j)):
+    if i==0: return set([(1,i) for i in range(6)])
+
+    cmap = lambda x,y: (j/i*(i+x)+j%i+y)%(6*(i+x))
+    if i==1:
+        return set([(0, 0), (i, j-1), (i, j+1),
+                    (i+1, cmap(1,0)), (i+1, cmap(1,-1)), (i+1, cmap(1,1))])
+    elif j%i:
+        return set([(i, j-1), (i, j+1),
+                    (i+1, cmap(1,0)),  (i+1, cmap(1,1)),
+                    (i-1, cmap(-1,0)), (i-1, cmap(-1,-1))])
+    else:
+        return set([(i-1, cmap(-1,0)), (i, j-1), (i, j+1),
+                    (i+1, cmap(1,0)), (i+1, cmap(1,-1)), (i+1, cmap(1,1))])
+​
+# brute-force search to get the distance
+def hex_spiral(*args):
+    first, second = map(get_coordinate, args)
+
+    d, visited, to_search = 0, set([]), {first,}
+    while second not in to_search:
+        temp = set([])
+        for p in to_search:
+            visited.add(p)
+            temp = temp.union(get_neighbor(p))
+        to_search = temp
+        d += 1
+    return d
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="MagicSquare.html" title="Magic Square"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

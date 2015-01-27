@@ -1,0 +1,87 @@
+One Line Drawing
+====================
+
+task_OneLineDrawing_
+
+.. _task_OneLineDrawing: http://www.checkio.org/mission/one-line-drawing/
+
+A figure is represented as a set of segments in the rectangular coordinate system. Each segment is represented as a sequence of 4 numbers: (x1, y1, x2, y2), where x1, y1 are coordinates for the first end and x2, y2 -- for the second. Segments are undirected. All points in a figure are connected, so you can reach each point from any point.
+
+You should find a path in order to draw the figure. You can pass through each segment only once and are not allowed to lift the pen. The result must be represented as a sequence of points (tuples with coordinates) in the order of how the pen moves to create the drawing. The path may be started and ended at any point. If it's impossible to draw a figure then return an empty sequence. Let's look at some examples:
+
+.. image:: ../image/OneLineDrawing.png
+
+**Input:** Figure segments as a set of tuples with 4 integers each.
+
+**Output:** The path as a list or tuple of tuples with 2 integers each.
+
+**Example:**
+
+.. code-block:: python
+
+    draw({(1,2,1,5),(1,2,7,2),(1,5,4,7),(4,7,7,5)}) == ((7,2),(1,2),(1,5),(4,7),(7,5))
+    draw({(1,2,1,5),(1,2,7,2),(1,5,4,7),(4,7,7,5),(7,5,7,2),(1,5,7,2),(7,5,1,2)}) == []
+    draw({(1,2,1,5),(1,2,7,2),(1,5,4,7),(4,7,7,5),(7,5,7,2),(1,5,7,2),(7,5,1,2),(1,5,7,5)}) == ((7,2),(1,2),(1,5),(4,7),(7,5),(7,2),(1,5),(7,5),(1,2))
+
+
+**Precondition:** 
+
+    | 0 < len(segments) < 30
+    | all(all(0 < x < 100 for x in s) for s in segments)
+
+**Solution:**
+
+.. code-block:: python
+
+    from copy import deepcopy
+
+    def isconnect(p1, p2, pdict):
+        visited, to_search = set([]), {p1,}
+        while to_search and (p2 not in to_search):
+            temp = set([])
+            for p in to_search:
+                visited.add(p)
+                temp |= pdict[p]
+            to_search = temp
+        return p2 in to_search
+
+    def draw(segments):
+        pdict = {}
+        for seg in segments:
+            p1, p2 = tuple(seg[:2]), tuple(seg[2:])
+            pdict.setdefault(p1, set([])).add(p2)
+            pdict.setdefault(p2, set([])).add(p1)
+        
+        oddp = [p for p in pdict if len(pdict[p])%2]
+        
+        if oddp and len(oddp)!=2: 
+            return []
+        elif oddp:
+            start, end = oddp 
+        else:    
+            start, end = pdict.keys()[0], pdict.keys()[0]
+            
+        path = [start]
+        while segments:
+            if len(pdict[start])==1:
+                nextp = pdict[start].pop()
+            else:
+                for nextp in pdict[start]:
+                    if nextp==end: continue                
+                    tempdict = deepcopy(pdict)
+                    tempdict[start].remove(nextp)
+                    tempdict[nextp].remove(start)
+                    if isconnect(start, end, tempdict):
+                        pdict[start].remove(nextp)
+                        break
+            
+            try:
+                segments.remove(tuple(list(start)+list(nextp)))
+            except:
+                segments.remove(tuple(list(nextp)+list(start)))
+            
+            pdict[nextp].remove(start)
+            path.append(nextp)
+            start = nextp
+            
+        return path

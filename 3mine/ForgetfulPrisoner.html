@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Forgetful Prisoner &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Supply Stations" href="SupplyStations.html" />
+    <link rel="prev" title="Expected Dice" href="ExpectedDice.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="SupplyStations.html" title="Supply Stations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ExpectedDice.html"
+                        title="previous chapter">Expected Dice</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="SupplyStations.html"
+                        title="next chapter">Supply Stations</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/3mine/ForgetfulPrisoner.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="forgetful-prisoner">
+<h1>Forgetful Prisoner<a class="headerlink" href="#forgetful-prisoner" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/forgetful-prisoner/">task_ForgetfulPrisoner</a></p>
+<p>Consider The Dark Labyrinth to have been your training before taking on this challenge, young grasshopper. Once again, you find yourself in a labyrinth. It&#8217;s dark and the batteries in your flashlight have died. Due to your preparedness, you have in your possession an ultrasound scanner which can define the depth of passages in four directions. If you think that this will solve all your problems, then we have some news for you. You can not remember anything and use the scanner memory card. But it has an extremely limited capacity and can only remember 100 bits between runs.</p>
+<p>The labyrinth is 12x12 cells and surrounded by walls on all sides. Keep in mind, you are surrounded by darkness, so be careful to not run into a wall. This is a &#8220;multicall&#8221; mission and as such, your function will be called until you have solved the maze or run out of moves. For each iteration you receive a dictionary with information about the distances of walls in four directions: &#8220;N&#8221; - North, &#8220;S&#8221; - South, &#8220;W&#8221; - West and &#8220;E&#8221; - East. For example: if a neighbour cell is wall, then the distance is 0. You will see the exit only when you enter the exit cell.</p>
+<p>The second function argument is a &#8220;memory&#8221; number. For each iteration we restart the environment, thus you cannot store data in global variables. Memory numbers are 100 bit, so they can range from 0 (including) to 2100(excluding).</p>
+<p>For each iteration your function should return one or several actions as a string with directions and a memory number. Actions are described as directions: &#8220;N&#8221; - North, &#8220;S&#8221; - South, &#8220;W&#8221; - West and &#8220;E&#8221; - East. For example: the string &#8220;NWS&#8221; describes a sequence of three moves. The memory number is an integer 0 ≤ n &lt; 2**100. This number will be given in your function in the next iteration. You run too fast so you shouldn’t make a move that would have you walk into a wall. To make things interesting, you are limited to 300 moves (not iterations).</p>
+<p><strong>Input:</strong> Two arguments. Scanner results as a dictionary and the memory number as an integer.</p>
+<p><strong>Output:</strong> A tuple or a list with the action string and the memory number.</p>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">The labyrinth are surrounded by walls.</div>
+<div class="line">len(maze) == 12</div>
+<div class="line">all(len(row) == len(maze) for row in visible)</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">find_path</span><span class="p">(</span><span class="n">scanner</span><span class="p">,</span> <span class="n">memory</span><span class="p">):</span>
+    <span class="n">turn_order</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;N&#39;</span><span class="p">,</span> <span class="s">&#39;E&#39;</span><span class="p">,</span> <span class="s">&#39;S&#39;</span><span class="p">,</span> <span class="s">&#39;W&#39;</span><span class="p">]</span>
+
+    <span class="n">memory</span> <span class="o">=</span> <span class="mi">100001</span> <span class="k">if</span> <span class="n">memory</span><span class="o">==</span><span class="mi">0</span> <span class="k">else</span> <span class="n">memory</span>
+    <span class="n">turn</span><span class="p">,</span> <span class="n">front</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">memory</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">memory</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span><span class="p">,</span> <span class="n">memory</span><span class="o">%</span><span class="mi">10</span>
+
+    <span class="k">if</span> <span class="n">turn</span><span class="o">%</span><span class="mi">10</span><span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">front</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="p">(</span><span class="n">mode</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span>
+
+    <span class="n">right</span><span class="p">,</span> <span class="n">back</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="p">[(</span><span class="n">front</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]]:</span>
+            <span class="n">turn</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="p">(</span><span class="n">turn</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">right</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+        <span class="k">elif</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">front</span><span class="p">]]:</span>
+            <span class="n">search</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">*</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">+</span> \
+                     <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">*</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">search</span> <span class="o">+</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">front</span><span class="p">],</span> <span class="n">memory</span>
+        <span class="k">elif</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]]:</span>
+            <span class="n">turn</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="p">(</span><span class="n">turn</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">left</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">back</span><span class="p">],</span> <span class="n">turn</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">back</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]]:</span>
+            <span class="n">turn</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="p">(</span><span class="n">turn</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">left</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+        <span class="k">elif</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">front</span><span class="p">]]:</span>
+            <span class="n">search</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">*</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">+</span> \
+                     <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">*</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">search</span> <span class="o">+</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">front</span><span class="p">],</span> <span class="n">memory</span>
+        <span class="k">elif</span> <span class="n">scanner</span><span class="p">[</span><span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">]]:</span>
+            <span class="n">turn</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="p">(</span><span class="n">turn</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">right</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">turn_order</span><span class="p">[</span><span class="n">back</span><span class="p">],</span> <span class="n">turn</span><span class="o">*</span><span class="mi">100</span><span class="o">+</span><span class="n">back</span><span class="o">*</span><span class="mi">10</span><span class="o">+</span><span class="n">mode</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="SupplyStations.html" title="Supply Stations"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

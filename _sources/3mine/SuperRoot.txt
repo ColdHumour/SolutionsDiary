@@ -1,0 +1,40 @@
+Super Root
+=============================
+
+task_SuperRoot_
+
+.. _task_SuperRoot: http://www.checkio.org/mission/super-root/
+
+Square roots, cube roots, 4th roots... each are too boring for Nicola. He needs to find the super root! With your help he will almost certainly find it.
+
+The super root of a number N is the number x, such that x**x = N.
+
+The result should be accurate so that x**x ≈ N ± 0.001. Or N - 0.001 < x**x < N + 0.001.
+
+**Input:** A number (N) as an integer.
+
+**Output:** The super root (x) as a float or an integer.
+
+**Example:**
+
+.. code-block:: python
+
+    super_root(4) == 2
+    super_root(27) == 3
+    super_root(81) == 3.504339593597054
+
+**Precondition:** 
+
+    | 1 ≤ number ≤ 10 ** 10
+
+**Solution:**
+
+.. code-block:: python
+
+    from math import log
+
+    def super_root(n):
+        x, n = log(n)+1, float(n)
+        while abs(x**x-n)>0.001:
+            x -= (x**x-n)/(x**x*(1+log(x)))
+        return x

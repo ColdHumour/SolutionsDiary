@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simplification &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="ELECTRONIC STATION" href="0toctree.html" />
+    <link rel="next" title="Color Map" href="ColorMap.html" />
+    <link rel="prev" title="Mind Switcher" href="MindSwitcher.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ColorMap.html" title="Color Map"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="MindSwitcher.html" title="Mind Switcher"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">ELECTRONIC STATION</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="MindSwitcher.html"
+                        title="previous chapter">Mind Switcher</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ColorMap.html"
+                        title="next chapter">Color Map</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/1electronicStation/Simplification.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="simplification">
+<h1>Simplification<a class="headerlink" href="#simplification" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/simplification/">task_Simplification</a></p>
+<p>In mathematics, a polynomial is an expression consisting of variables (or indeterminates) and coefficients, that involves only the operations of addition, subtraction, multiplication, and non-negative integer exponents.</p>
+<p>You are given a mathematical expression with brackets and one variable as a string. The expression contains &#8220;x&#8221;, brackets and the following operators: + - * . You should convert this to a Polynomial. The power of &#8220;x&#8221; should be represented by &#8220;**&#8221;.</p>
+<p>The final form of the polynomial should be in the following format:</p>
+<blockquote>
+<div>CN*x**n+CN-1*x**(n-1)+...+C1*x+C0</div></blockquote>
+<p>where
+СN, СN-1, ... , С1, С0 - constants, integers.
+if C = 0, then don&#8217;t show this term (ex. 2*x**2+3). The only exception is alone zero (ex. &#8220;x-x&#8221; == &#8220;0&#8221;).
+if C = 1, then don&#8217;t show C. (ex. x**2+2*x). Only if it&#8217;s not С0.
+if C = -1, then don&#8217;t show C, only &#8220;-&#8221;. (ex. x*x-x). Only if it&#8217;s not С0.
+if power of x is 1, then don&#8217;t show the power (ex. 5*x). Terms must be in descending order, sorted by the power of the variable.</p>
+<p><strong>Input:</strong> An expression as a string (unicode).</p>
+<p><strong>Output:</strong> A polynomial as a string without whitespaces.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">simplify</span><span class="p">(</span><span class="s">&quot;(x-1)*(x+1)&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;x**2-1&quot;</span>
+<span class="n">simplify</span><span class="p">(</span><span class="s">&quot;(x+1)*(x+1)&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;x**2+2*x+1&quot;</span>
+<span class="n">simplify</span><span class="p">(</span><span class="s">&quot;(x+3)*x*2-x*x&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;x**2+6*x&quot;</span>
+<span class="n">simplify</span><span class="p">(</span><span class="s">&quot;x+x*x+x*x*x&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;x**3+x**2+x&quot;</span>
+<span class="n">simplify</span><span class="p">(</span><span class="s">&quot;(2*x+3)*2-x+x*x*x*x&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;x**4+3*x+6&quot;</span>
+<span class="n">simplify</span><span class="p">(</span><span class="s">&quot;x*x-(x-1)*(x+1)-1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;0&quot;</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">0 &lt; len(expr)</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">getexp</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">getpdt</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">parse_term</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="s">&#39;x&#39;</span> <span class="ow">in</span> <span class="n">term</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">term</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">sum_poly</span><span class="p">(</span><span class="n">poly</span><span class="p">):</span>
+    <span class="n">out</span><span class="p">,</span> <span class="n">poly</span> <span class="o">=</span> <span class="p">[],</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">getexp</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">poly</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span> <span class="ow">and</span> <span class="n">poly</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">poly</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">poly</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="k">if</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">mul_poly</span><span class="p">(</span><span class="n">poly</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[[</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">poly</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span>
+    <span class="k">while</span> <span class="n">poly</span><span class="p">:</span>
+        <span class="n">subp</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">out</span>  <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">+</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">subp</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="k">def</span> <span class="nf">poly2str</span><span class="p">(</span><span class="n">poly</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">mono</span> <span class="ow">in</span> <span class="n">poly</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">mono</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;x**</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">mono</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;-x**</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">elif</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">*x**</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">mono</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">mono</span><span class="o">==</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">mono</span><span class="o">==</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;-x&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">mono</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">*x&#39;</span> <span class="o">%</span> <span class="n">mono</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">mono</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="k">return</span> <span class="s">&#39;+&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;+-&#39;</span><span class="p">,</span><span class="s">&#39;-&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">s</span> <span class="k">else</span> <span class="s">&#39;0&#39;</span>
+
+<span class="k">def</span> <span class="nf">simplify</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;-&#39;</span><span class="p">,</span> <span class="s">&#39;+-1*&#39;</span><span class="p">)</span>
+
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s">r&#39;\([+\-\*\dxp]+?\)&#39;</span><span class="p">)</span>
+    <span class="n">subpoly</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">match</span><span class="p">,</span> <span class="s">&#39;p</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">index</span><span class="p">)</span>
+        <span class="n">new_sp</span><span class="p">,</span> <span class="n">old_sp</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">match</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;+&#39;</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">old_sp</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">mul_poly</span><span class="p">([</span><span class="n">subpoly</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">t</span> <span class="ow">in</span> <span class="n">subpoly</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">parse_term</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">p</span><span class="p">])</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="p">[</span><span class="nb">reduce</span><span class="p">(</span><span class="n">getpdt</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">temp</span><span class="p">]</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">sum_poly</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+            <span class="n">new_sp</span> <span class="o">+=</span> <span class="n">sum_poly</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="k">if</span> <span class="n">sum_poly</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="k">else</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+        <span class="n">subpoly</span><span class="p">[</span><span class="s">&#39;p</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum_poly</span><span class="p">(</span><span class="n">new_sp</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">poly</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;+&#39;</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">term</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">poly</span><span class="p">):</span>
+        <span class="n">poly</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul_poly</span><span class="p">([</span><span class="n">subpoly</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span> <span class="ow">in</span> <span class="n">subpoly</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">parse_term</span><span class="p">(</span><span class="n">p</span><span class="p">)]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">term</span><span class="p">])</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">sum_poly</span><span class="p">([</span><span class="nb">reduce</span><span class="p">(</span><span class="n">getpdt</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">sum</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="p">[])])</span>
+
+    <span class="k">return</span> <span class="n">poly2str</span><span class="p">(</span><span class="n">poly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ColorMap.html" title="Color Map"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="MindSwitcher.html" title="Mind Switcher"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >ELECTRONIC STATION</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dark Labyrinth &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="INCINERATOR" href="0toctree.html" />
+    <link rel="next" title="MINE" href="../3mine/0toctree.html" />
+    <link rel="prev" title="BullsAndCows" href="BullsAndCows.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../3mine/0toctree.html" title="MINE"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="BullsAndCows.html" title="BullsAndCows"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">INCINERATOR</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="BullsAndCows.html"
+                        title="previous chapter">BullsAndCows</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../3mine/0toctree.html"
+                        title="next chapter">MINE</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/2incinerator/DarkLabyrinth.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dark-labyrinth">
+<h1>Dark Labyrinth<a class="headerlink" href="#dark-labyrinth" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/dark-labyrinth/">task_DarkLabyrinth</a></p>
+<p>Do you remember the classic mission Open Labyrinth? Well, you once again find yourself inside a labyrinth, but the lights are out and you cannot see the full map. You have flashlight and know that all passages in the Labyrinth are directed along South-North and East-West lines. You don&#8217;t yet know your position or the location of the exit. You must hurry as you cannot run forever.</p>
+<p>This is a &#8220;multicall&#8221; mission and as such, your function will be called until you have solved the maze or run out of moves. For each iteration you see a part of the labyrinth in four directions (function input). You can see passages and where they have crossings and turns. If it’s in your range of vision, you’ll see the exit too. The visible zones are represented as a grid as a tuple of strings, where &#8220;X&#8221; is a wall, &#8221;.&#8221; is a passage cell, &#8221;?&#8221; is unknown, &#8220;P&#8221; is player and &#8220;E&#8221; is the exit. Grids are represented as 2D rectangular arrays. The size is related to size of the visible zone.</p>
+<p>For each iteration your function should return one or several actions as a string with directions. Actions are described as directions: &#8220;N&#8221; - North, &#8220;S&#8221; - South, &#8220;W&#8221; - West and &#8220;E&#8221; - East. For example: the string &#8220;NWS&#8221; describes a sequence of three moves. The walls are coated in a weird slime so you shouldn’t make a move that would have you walk into a wall. To make things interesting, you are limited to 250 moves (not iterations). You can use global variables between iterations.</p>
+<img src="../_images/DarkLabyrinth.svg" /><p>For example on the image you can see the full labyrinth and that will be visible for player. And your function will receive:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="s">&quot;???XXX&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???...&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???X.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;XXXX.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;X...PX&quot;</span><span class="p">,</span>
+ <span class="s">&quot;XXXX.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???X.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???...&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???X.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???X.X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???..X&quot;</span><span class="p">,</span>
+ <span class="s">&quot;???XXX&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Input:</strong> A visible part as a tuple of strings.</p>
+<p><strong>Output:</strong> An action or several actions as a string.</p>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">The labyrinth are surrounded by walls.</div>
+<div class="line">All passages are narrow (1 cell width)</div>
+<div class="line">3 &lt; len(visible) ≤ 15</div>
+<div class="line">all(len(row) == len(visible[0]) for row in visible)</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">history_g</span><span class="p">,</span> <span class="n">to_search_g</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">visited_g</span><span class="p">,</span> <span class="n">open_area_g</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)},</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)}</span>
+
+<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">pathlist</span><span class="p">,</span> <span class="n">start</span><span class="p">):</span>
+    <span class="n">DIRS</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;E&#39;</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;W&#39;</span><span class="p">:(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="s">&#39;S&#39;</span><span class="p">:(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="s">&#39;N&#39;</span><span class="p">:(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)}</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">nodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">DIRS</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">nodes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">DIRS</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+
+<span class="k">def</span> <span class="nf">get_direction</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">ptrdict</span><span class="p">):</span>
+    <span class="n">DIRS</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;E&#39;</span><span class="p">,</span><span class="s">&#39;W&#39;</span><span class="p">],[</span><span class="s">&#39;S&#39;</span><span class="p">],[</span><span class="s">&#39;N&#39;</span><span class="p">]]</span>
+    <span class="n">node</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">p2</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
+    <span class="k">while</span> <span class="n">node</span> <span class="o">!=</span> <span class="n">p1</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">DIRS</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">ptrdict</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]][</span><span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">ptrdict</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">path</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">ptrdict</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">path</span>
+
+<span class="k">def</span> <span class="nf">get_neighbor</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">llim</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">wlim</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">plist</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">llim</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">wlim</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">plist</span>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="n">plist</span> <span class="k">if</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">&lt;</span><span class="n">llim</span> <span class="ow">and</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">j</span><span class="o">&lt;</span><span class="n">wlim</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">open_area_g</span>
+    <span class="n">visited</span><span class="p">,</span> <span class="n">to_search</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{</span><span class="n">p1</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+    <span class="k">while</span> <span class="n">to_search</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">:</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_search</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="n">neighbor</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">get_neighbor</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">if</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">open_area_g</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">neighbor</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">q</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span> <span class="n">temp</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">to_search</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">return</span> <span class="n">get_direction</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">visited</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">region</span><span class="p">):</span>
+    <span class="n">llim</span><span class="p">,</span> <span class="n">wlim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">visited</span><span class="p">,</span> <span class="n">to_search</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{</span><span class="n">p1</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+    <span class="k">while</span> <span class="n">to_search</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">:</span>
+            <span class="n">visited</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_search</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="n">neighbor</span> <span class="o">=</span> <span class="n">get_neighbor</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">llim</span><span class="p">,</span> <span class="n">wlim</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="n">neighbor</span> <span class="k">if</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="s">&#39;.PE&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">q</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span> <span class="n">temp</span><span class="p">[</span><span class="n">q</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">to_search</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">return</span> <span class="n">get_direction</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">visited</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">find_path</span><span class="p">(</span><span class="n">region</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">history_g</span><span class="p">,</span> <span class="n">open_area_g</span><span class="p">,</span> <span class="n">visited_g</span><span class="p">,</span> <span class="n">to_search_g</span>
+    <span class="n">to_search_g</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">to_search_g</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited_g</span><span class="p">]</span>
+    <span class="n">llim</span><span class="p">,</span> <span class="n">wlim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">edgelist</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">llim</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">wlim</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;P&#39;</span><span class="p">:</span>
+                <span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;E&#39;</span><span class="p">:</span>
+                <span class="n">E</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">region</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;.&#39;</span><span class="p">:</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="n">get_neighbor</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">llim</span><span class="p">,</span> <span class="n">wlim</span><span class="p">)</span>
+                <span class="n">nb</span> <span class="o">=</span> <span class="p">[</span><span class="n">region</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">nb</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">nb</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">nb</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;X&#39;</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">3</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">nb</span><span class="p">)</span><span class="o">-</span><span class="n">nb</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">:</span>
+                    <span class="n">edgelist</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">E</span><span class="p">:</span> <span class="k">return</span> <span class="n">move</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
+
+    <span class="n">current</span> <span class="o">=</span> <span class="n">draw</span><span class="p">(</span><span class="n">history_g</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">pathlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">move</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">edgelist</span><span class="p">],</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">edgelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">draw</span><span class="p">([</span><span class="n">path</span><span class="p">],</span> <span class="n">P</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">]</span>
+    <span class="n">complist</span> <span class="o">=</span> <span class="p">[</span><span class="n">draw</span><span class="p">([</span><span class="n">path</span><span class="p">],</span> <span class="n">current</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">]</span>
+
+    <span class="n">pathlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">pathlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">complist</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited_g</span><span class="p">]</span>
+    <span class="n">edgelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">edgelist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">complist</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited_g</span><span class="p">]</span>
+    <span class="n">complist</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">complist</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited_g</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">pathlist</span><span class="p">:</span>
+        <span class="n">history_g</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pathlist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">visited_g</span> <span class="o">=</span> <span class="n">visited_g</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">draw</span><span class="p">(</span><span class="n">pathlist</span><span class="p">[:</span><span class="mi">1</span><span class="p">],</span> <span class="n">current</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pathlist</span><span class="p">:</span>
+            <span class="n">open_area_g</span> <span class="o">=</span> <span class="n">open_area_g</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">draw</span><span class="p">([</span><span class="n">path</span><span class="p">],</span> <span class="n">current</span><span class="p">))</span>
+        <span class="n">to_search_g</span> <span class="o">+=</span> <span class="n">complist</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">pathlist</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">to_search_g</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="n">history_g</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">visited_g</span> <span class="o">=</span> <span class="n">visited_g</span> <span class="o">|</span> <span class="nb">set</span><span class="p">(</span><span class="n">draw</span><span class="p">([</span><span class="n">path</span><span class="p">],</span> <span class="n">current</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">path</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../3mine/0toctree.html" title="MINE"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="BullsAndCows.html" title="BullsAndCows"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >INCINERATOR</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

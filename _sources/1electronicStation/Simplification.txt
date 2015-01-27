@@ -1,0 +1,112 @@
+Simplification
+====================
+
+task_Simplification_
+
+.. _task_Simplification: http://www.checkio.org/mission/simplification/
+
+In mathematics, a polynomial is an expression consisting of variables (or indeterminates) and coefficients, that involves only the operations of addition, subtraction, multiplication, and non-negative integer exponents.
+
+You are given a mathematical expression with brackets and one variable as a string. The expression contains "x", brackets and the following operators: + - * . You should convert this to a Polynomial. The power of "x" should be represented by "**".
+
+The final form of the polynomial should be in the following format:
+
+     CN*x**n+CN-1*x**(n-1)+...+C1*x+C0
+    
+where
+СN, СN-1, ... , С1, С0 - constants, integers.
+if C = 0, then don't show this term (ex. 2*x**2+3). The only exception is alone zero (ex. "x-x" == "0").
+if C = 1, then don't show C. (ex. x**2+2*x). Only if it's not С0.
+if C = -1, then don't show C, only "-". (ex. x*x-x). Only if it's not С0.
+if power of x is 1, then don't show the power (ex. 5*x). Terms must be in descending order, sorted by the power of the variable.
+
+**Input:** An expression as a string (unicode).
+
+**Output:** A polynomial as a string without whitespaces.
+
+**Example:**
+
+.. code-block:: python
+
+    simplify("(x-1)*(x+1)") == "x**2-1"
+    simplify("(x+1)*(x+1)") == "x**2+2*x+1"
+    simplify("(x+3)*x*2-x*x") == "x**2+6*x"
+    simplify("x+x*x+x*x*x") == "x**3+x**2+x"
+    simplify("(2*x+3)*2-x+x*x*x*x") == "x**4+3*x+6"
+    simplify("x*x-(x-1)*(x+1)-1") == "0"
+
+**Precondition:** 
+
+    | 0 < len(expr)
+
+**Solution:**
+
+.. code-block:: python
+
+    import re
+
+    getexp = lambda x: x[1]
+    getpdt = lambda x,y: (x[0]*y[0], x[1]+y[1])
+
+    def parse_term(term):
+        return (1, 1) if ('x' in term) else (int(term), 0)
+
+    def sum_poly(poly):
+        out, poly = [], sorted(poly, key=getexp)
+        while poly:
+            m = poly.pop()
+            if len(poly) and poly[-1][1]==m[1]:
+                poly[-1] = (poly[-1][0]+m[0], m[1])
+            else:
+                out += [m] if m[0] else []
+        return out
+
+    def mul_poly(poly):
+        out = [[p] for p in poly.pop()]
+        while poly:
+            subp = poly.pop()
+            out  = [p+[m] for p in out for m in subp]
+        return out
+
+    def poly2str(poly):
+        s = []
+        for mono in poly:
+            if mono[1]>1 and mono[0]==1:
+                s += ['x**%d' % mono[1]]
+            elif mono[1]>1 and mono[0]==-1:
+                s += ['-x**%d' % mono[1]]
+            elif mono[1]>1:
+                s += ['%d*x**%d' % mono]
+            elif mono==(1, 1):
+                s += ['x']
+            elif mono==(-1, 1):
+                s += ['-x']
+            elif mono[1]==1:
+                s += ['%d*x' % mono[0]]
+            else:
+                s += [str(mono[0])]
+        return '+'.join(s).replace('+-','-') if s else '0'
+
+    def simplify(string):
+        string = string.replace('-', '+-1*')
+        
+        pattern = re.compile(r'\([+\-\*\dxp]+?\)')
+        subpoly, index = {}, 0
+        while pattern.search(string):
+            match = pattern.search(string).group()
+            string = string.replace(match, 'p%d' % index)
+            new_sp, old_sp = [], [p.split('*') for p in match[1:-1].split('+')]
+            for p in old_sp:
+                temp = mul_poly([subpoly[t] if (t in subpoly) else [parse_term(t)] for t in p])
+                temp = [reduce(getpdt, t) for t in temp]
+                temp = sum_poly(temp)
+                new_sp += sum_poly(temp) if sum_poly(temp) else [(0, 0)]
+            subpoly['p%d' % index] = sum_poly(new_sp)
+            index += 1
+        
+        poly = [p.split('*') for p in string.split('+')]
+        for i,term in enumerate(poly):
+            poly[i] = mul_poly([subpoly[p] if (p in subpoly) else [parse_term(p)] for p in term])
+        poly = sum_poly([reduce(getpdt, m) for m in sum(poly, [])])
+        
+        return poly2str(poly)

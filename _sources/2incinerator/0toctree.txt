@@ -1,0 +1,11 @@
+INCINERATOR
+=============
+
+.. toctree::
+    
+    ConvexPolygonArea.rst
+    ProbablyDice.rst
+    SudokuSolver.rst
+    ExecQuine.rst
+    BullsAndCows.rst
+    DarkLabyrinth.rst

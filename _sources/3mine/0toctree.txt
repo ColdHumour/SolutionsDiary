@@ -1,0 +1,12 @@
+MINE
+=============
+
+.. toctree::
+    
+    SuperRoot.rst
+    RepeatingDecimals.rst
+    MagicSquare.rst
+    HexagonSpiral.rst
+    ExpectedDice.rst
+    ForgetfulPrisoner.rst
+    SupplyStations.rst

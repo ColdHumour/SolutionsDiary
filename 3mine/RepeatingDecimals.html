@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Repeating Decimals &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Magic Square" href="MagicSquare.html" />
+    <link rel="prev" title="Super Root" href="SuperRoot.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="MagicSquare.html" title="Magic Square"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SuperRoot.html" title="Super Root"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SuperRoot.html"
+                        title="previous chapter">Super Root</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="MagicSquare.html"
+                        title="next chapter">Magic Square</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/3mine/RepeatingDecimals.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="repeating-decimals">
+<h1>Repeating Decimals<a class="headerlink" href="#repeating-decimals" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/repeating-decimals/">task_RepeatingDecimals</a></p>
+<p>In mathematics, a repeating decimal is a way of representing a rational number. A decimal representation of a number is called a repeating decimal if at some point there is some finite sequence of digits that is repeated infinitely. For example: the decimal representation of 1/3 = 0.3333333… or 0.(3) becomes periodic just after the decimal point, repeating the single-digit sequence &#8220;3&#8221; infinitely. Here is another example is 27/26 = 1.0384615384615385… or 1.0(384615), where the decimal becomes periodic after the second digit past the decimal point, repeating the sequence &#8220;384615&#8221; infinitely. Rational numbers are numbers which can be expressed in the form a/b where a and b are integers and b is not zero. This form is known as a common fraction. Read more about this at Wikipedia.</p>
+<p>You should write a function for the converting a fraction into decimal representation. If the decimal is repeating, you should represent it using the brackets format seen above. You are given two integers, the first is the fractions numerator and the second is its denominator. For this task, you will need to return the fraction in decimal representation as a string. The integer results (as 0 or 2) must be ended with a dot.</p>
+<p><strong>Input:</strong> Two arguments. A numerator and a denominator as integers.</p>
+<p><strong>Output:</strong> The decimal representation of the fraction in the bracket format as a string.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;0.(3)&quot;</span>
+<span class="n">convert</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;1.(6)&quot;</span>
+<span class="n">convert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;0.375&quot;</span>
+<span class="n">convert</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;0.(63)&quot;</span>
+<span class="n">convert</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;2.41(6)&quot;</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">0 ≤ numerator ≤ 1000</div>
+<div class="line">1 ≤ denominator ≤ 1000</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">quotients</span><span class="p">,</span> <span class="n">remainder</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">)],</span> <span class="p">[]</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">10</span>
+
+    <span class="k">while</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">remainder</span><span class="p">:</span>
+        <span class="n">remainder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">quotients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="mi">10</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">quotients</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">.&#39;</span> <span class="o">%</span> <span class="n">quotients</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">remainder</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">(</span><span class="si">%s</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">quotients</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quotients</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="p">]),</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quotients</span><span class="p">[</span><span class="n">i</span><span class="p">:]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">quotients</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">quotients</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="MagicSquare.html" title="Magic Square"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SuperRoot.html" title="Super Root"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

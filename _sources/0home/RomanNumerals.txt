@@ -1,0 +1,78 @@
+Roman Numerals
+================
+
+task_RomanNumerals_
+
+.. _task_RomanNumerals: http://www.checkio.org/mission/roman-numerals/
+
+The Roman numeral system is decimal based but not directly positional and does not include a zero. Roman numerals are based on combinations of these seven symbols:
+
+Symbol Value
+I 1 (unus)
+V 5 (quinque)
+X 10 (decem)
+L 50 (quinquaginta)
+C 100 (centum)
+D 500 (quingenti)
+M 1000 (mille)
+
+For this task, you should return a roman numeral using the specified integer value ranging from 1 to 3999.
+
+**Input:** A number as an integer.
+
+**Output:** The Roman numeral as a string.
+
+**Example:**
+
+.. code-block:: python
+
+    checkio(6) == 'VI'
+    checkio(76) == 'LXXVI'
+    checkio(13) == 'XIII'
+    checkio(44) == 'XLIV'
+    checkio(3999) == 'MMMCMXCIX'
+
+**Precondition:** 0 < number < 4000
+
+**Solution:**
+
+.. code-block:: python
+
+    def checkio(data):
+        x = data/1000
+        rom = x*'M'
+        
+        data -= x*1000
+        x = data/100
+        if x==9:
+            rom += 'CM'
+        elif x>=5:
+            rom += 'D'+'C'*(x-5)
+        elif x==4:
+            rom += 'CD'
+        else:
+            rom += 'C'*x
+        
+        data -= x*100
+        x = data/10
+        if x==9:
+            rom += 'XC'
+        elif x>=5:
+            rom += 'L'+'X'*(x-5)
+        elif x==4:
+            rom += 'XL'
+        else:
+            rom += 'X'*x
+        
+        data -= x*10
+        x = data
+        if x==9:
+            rom += 'IX'
+        elif x>=5:
+            rom += 'V'+'I'*(x-5)
+        elif x==4:
+            rom += 'IV'
+        else:
+            rom += 'I'*x
+        
+        return rom

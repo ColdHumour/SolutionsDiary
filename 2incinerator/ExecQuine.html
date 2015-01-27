@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Exec Quine &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="INCINERATOR" href="0toctree.html" />
+    <link rel="next" title="BullsAndCows" href="BullsAndCows.html" />
+    <link rel="prev" title="Sudoku Solver" href="SudokuSolver.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="BullsAndCows.html" title="BullsAndCows"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="SudokuSolver.html" title="Sudoku Solver"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">INCINERATOR</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="SudokuSolver.html"
+                        title="previous chapter">Sudoku Solver</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="BullsAndCows.html"
+                        title="next chapter">BullsAndCows</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/2incinerator/ExecQuine.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="exec-quine">
+<h1>Exec Quine<a class="headerlink" href="#exec-quine" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/exec-quine/">task_ExecQuine</a></p>
+<p>&#8220;If, however, in our perversity we are still bent on constructing a sentence that does attribute falsity unequivocally to itself, we can do so thus:</p>
+<p>&#8216;Yields a falsehood when appended to its own quotation&#8217; yields a falsehood when appended to its own quotation.</p>
+<p>This sentence specifies a string of nine words and says of this string that if you put it down twice, with quotation marks around the first of the two occurrences, the result is false. But that result is the very sentence that is doing the telling. The sentence is true if and only if it is false, and we have our antinomy.&#8221;
+&#8211; &#8220;The Ways of Paradox and Other Essays&#8221; W.V. Quine 1976</p>
+<p>A quine is a computer program which takes no input and produces a copy of its own source code as the only output. These types of programs are often known as &#8220;self-replicating programs&#8221;, &#8220;self-reproducing programs&#8221;, or&#8221;self-copying programs&#8221; in the computer sciences fields.</p>
+<p>You should implement a function (this function will be called “quine”) which will reproduce itself within an environment. Lets refer to the entire code as ANSWER_CODE, and this code contains the quine function definition. If we execute quine(), the result should be a string which is a copy of ANSWER_CODE. You can check this in your local environment with the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">exec</span><span class="p">(</span><span class="n">ANSWER_CODE</span><span class="p">);</span><span class="n">quine</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this mission, there is only one test. You should be careful with newlines, tabs and white-spaces, because the test compares ANSWER_CODE and the functions result as they are. In this mission the main goal is to develop an original and creative solution. This missions rewards are based on peer reviews, so the votes from other users, will give you increased exp points.</p>
+<p><strong>Input:</strong> Nothing.</p>
+<p><strong>Output:</strong> The code as a string.</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">quine</span><span class="p">():</span>
+    <span class="n">x</span><span class="o">=</span><span class="s">&#39;def quine():</span><span class="se">\n</span><span class="s">    &#39;</span>
+    <span class="n">y</span><span class="o">=</span><span class="s">&quot;return x+&#39;x=&#39;+repr(x)+&#39;</span><span class="se">\n</span><span class="s">    y=&#39;+repr(y)+&#39;</span><span class="se">\n</span><span class="s">    &#39;+repr(y)[1:-1]&quot;</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="s">&#39;x=&#39;</span><span class="o">+</span><span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">    y=&#39;</span><span class="o">+</span><span class="nb">repr</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">    &#39;</span><span class="o">+</span><span class="nb">repr</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="BullsAndCows.html" title="BullsAndCows"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="SudokuSolver.html" title="Sudoku Solver"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >INCINERATOR</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

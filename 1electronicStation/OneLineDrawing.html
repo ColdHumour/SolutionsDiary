@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>One Line Drawing &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="ELECTRONIC STATION" href="0toctree.html" />
+    <link rel="next" title="Mind Switcher" href="MindSwitcher.html" />
+    <link rel="prev" title="Brackets" href="Brackets.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="MindSwitcher.html" title="Mind Switcher"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="Brackets.html" title="Brackets"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">ELECTRONIC STATION</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="Brackets.html"
+                        title="previous chapter">Brackets</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="MindSwitcher.html"
+                        title="next chapter">Mind Switcher</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/1electronicStation/OneLineDrawing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="one-line-drawing">
+<h1>One Line Drawing<a class="headerlink" href="#one-line-drawing" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/one-line-drawing/">task_OneLineDrawing</a></p>
+<p>A figure is represented as a set of segments in the rectangular coordinate system. Each segment is represented as a sequence of 4 numbers: (x1, y1, x2, y2), where x1, y1 are coordinates for the first end and x2, y2 &#8211; for the second. Segments are undirected. All points in a figure are connected, so you can reach each point from any point.</p>
+<p>You should find a path in order to draw the figure. You can pass through each segment only once and are not allowed to lift the pen. The result must be represented as a sequence of points (tuples with coordinates) in the order of how the pen moves to create the drawing. The path may be started and ended at any point. If it&#8217;s impossible to draw a figure then return an empty sequence. Let&#8217;s look at some examples:</p>
+<img alt="../_images/OneLineDrawing.png" src="../_images/OneLineDrawing.png" />
+<p><strong>Input:</strong> Figure segments as a set of tuples with 4 integers each.</p>
+<p><strong>Output:</strong> The path as a list or tuple of tuples with 2 integers each.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="p">({(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">)})</span> <span class="o">==</span> <span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">draw</span><span class="p">({(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)})</span> <span class="o">==</span> <span class="p">[]</span>
+<span class="n">draw</span><span class="p">({(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">)})</span> <span class="o">==</span> <span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">0 &lt; len(segments) &lt; 30</div>
+<div class="line">all(all(0 &lt; x &lt; 100 for x in s) for s in segments)</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="k">def</span> <span class="nf">isconnect</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">pdict</span><span class="p">):</span>
+    <span class="n">visited</span><span class="p">,</span> <span class="n">to_search</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([]),</span> <span class="p">{</span><span class="n">p1</span><span class="p">,}</span>
+    <span class="k">while</span> <span class="n">to_search</span> <span class="ow">and</span> <span class="p">(</span><span class="n">p2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">):</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">:</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="n">temp</span> <span class="o">|=</span> <span class="n">pdict</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+        <span class="n">to_search</span> <span class="o">=</span> <span class="n">temp</span>
+    <span class="k">return</span> <span class="n">p2</span> <span class="ow">in</span> <span class="n">to_search</span>
+
+<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">segments</span><span class="p">):</span>
+    <span class="n">pdict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
+        <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">seg</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+        <span class="n">pdict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="nb">set</span><span class="p">([]))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
+        <span class="n">pdict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="nb">set</span><span class="p">([]))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
+
+    <span class="n">oddp</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pdict</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdict</span><span class="p">[</span><span class="n">p</span><span class="p">])</span><span class="o">%</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">oddp</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">oddp</span><span class="p">)</span><span class="o">!=</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">elif</span> <span class="n">oddp</span><span class="p">:</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">oddp</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">pdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">segments</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">])</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">nextp</span> <span class="o">=</span> <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">nextp</span> <span class="ow">in</span> <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">nextp</span><span class="o">==</span><span class="n">end</span><span class="p">:</span> <span class="k">continue</span>
+                <span class="n">tempdict</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">pdict</span><span class="p">)</span>
+                <span class="n">tempdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
+                <span class="n">tempdict</span><span class="p">[</span><span class="n">nextp</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">isconnect</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">tempdict</span><span class="p">):</span>
+                    <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">segments</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">nextp</span><span class="p">)))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">segments</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">start</span><span class="p">)))</span>
+
+        <span class="n">pdict</span><span class="p">[</span><span class="n">nextp</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">nextp</span>
+
+    <span class="k">return</span> <span class="n">path</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="MindSwitcher.html" title="Mind Switcher"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="Brackets.html" title="Brackets"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >ELECTRONIC STATION</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

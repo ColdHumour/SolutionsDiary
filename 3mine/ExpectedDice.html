@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Expected Dice &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Forgetful Prisoner" href="ForgetfulPrisoner.html" />
+    <link rel="prev" title="Hexagon Spiral" href="HexagonSpiral.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ForgetfulPrisoner.html" title="Forgetful Prisoner"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="HexagonSpiral.html"
+                        title="previous chapter">Hexagon Spiral</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ForgetfulPrisoner.html"
+                        title="next chapter">Forgetful Prisoner</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/3mine/ExpectedDice.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="expected-dice">
+<h1>Expected Dice<a class="headerlink" href="#expected-dice" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/expected-dice/">task_ExpectedDice</a></p>
+<p>For this task, you&#8217;ll be playing some classic tabletop games. Or rather, you&#8217;re going to be, but first you&#8217;d like to know more about the probabilities involved in dice rolling.</p>
+<p>Many board games fall under the category of &#8220;roll and move&#8221; games. In these games, you roll some dice and move that many spaces forward. You might then move forward or backwards a number of spaces depending on which space you land on.</p>
+<p>Given a description of the board and the dice used, you want to work out what the expected number of moves would be to reach a target square. For this task, all the boards under consideration are circular and when moving off one end you simply continue from the other. A board is represented as a list of integers. Each cell number means how many cells to move (positive for forward, negative for backwards) after landing on that cell. You always start from the first cell (index 0) and the starting and target squares will not require any further movement after landing on them.</p>
+<p>For example: If we have one 4-sided die, the simple board [0,0,0,0] and any target square, then you have a 1/4 chance of reaching the target on every roll, so on average it will take 4 rolls. The result should be given with one digit precision as ±0.1.</p>
+<p><strong>Input:</strong> A number of dice to roll as an integer, the number of sides on each die as an integer, a target space as an integer and a board as a list of integers.</p>
+<p><strong>Output:</strong> The expected number of moves needed to reach the target space starting from space 0, correct to 1 digit after the decimal place. If it takes 33 1/3 moves, you should return 33.3. All test cases have a finite expected number of moves.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">expected</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">4.0</span>   <span class="c"># On these first three, you have a 1/4 chance of reaching the target</span>
+<span class="n">expected</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">4.0</span>   <span class="c"># on every roll, so on average it will take 4 rolls.</span>
+<span class="n">expected</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">4.0</span>
+<span class="n">expected</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mf">1.3</span>   <span class="c"># You have a 3/4 chance of reaching the exit and 1/4 chance of ending up where you started</span>
+<span class="n">expected</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">8.6</span>
+<span class="n">expected</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mf">10.2</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1 ≤ dice_number ≤ 3</div>
+<div class="line">2 ≤ sides ≤ 10</div>
+<div class="line">0 &lt; target &lt; len(board)</div>
+<div class="line">4 ≤ len(board) ≤ 30</div>
+<div class="line">board[0] == 0</div>
+<div class="line">board[target] == 0</div>
+<div class="line">all(board[(i + board[i]) % len(board)] == 0 for i in range(len(board)))</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">expected</span><span class="p">(</span><span class="n">dice_number</span><span class="p">,</span> <span class="n">sides</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dice_number</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">j</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sides</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">tm</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">d</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">if</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">%</span><span class="n">d</span> <span class="o">+</span> <span class="n">board</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">%</span><span class="n">d</span><span class="p">]</span>
+            <span class="n">tm</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">pos</span><span class="o">%</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+    <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">expected_move</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">m</span><span class="o">&lt;</span><span class="mi">10</span> <span class="ow">or</span> <span class="n">m</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.001</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">tm</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)]</span>
+        <span class="n">expected_move</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">p</span><span class="p">[</span><span class="n">target</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">expected_move</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ForgetfulPrisoner.html" title="Forgetful Prisoner"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+    </div>
+  </body>
+</html>

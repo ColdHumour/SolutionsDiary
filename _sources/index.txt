@@ -1,0 +1,17 @@
+Bukebuer's Checkio Solutions
+===================================
+
+Tasks:
+------------
+
+.. toctree::
+   :maxdepth: 2
+
+   0home/0toctree
+   1electronicStation/0toctree
+   2incinerator/0toctree
+   3mine/0toctree
+   4scientificExpedition/0toctree
+   5iceBase/0toctree
+
+
