@@ -26,10 +26,10 @@
     <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
     <link rel="up" title="ELECTRONIC STATION" href="0toctree.html" />
     <link rel="next" title="Mind Switcher" href="MindSwitcher.html" />
-    <link rel="prev" title="Brackets" href="Brackets.html" /> 
+    <link rel="prev" title="Univocalic Factaral" href="UnivocalicFactaral.html" /> 
   </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
+  <body>
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -39,28 +39,26 @@
           <a href="MindSwitcher.html" title="Mind Switcher"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Brackets.html" title="Brackets"
+          <a href="UnivocalicFactaral.html" title="Univocalic Factaral"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
           <li><a href="0toctree.html" accesskey="U">ELECTRONIC STATION</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="Brackets.html"
-                        title="previous chapter">Brackets</a></p>
+  <p class="topless"><a href="UnivocalicFactaral.html"
+                        title="previous chapter">Univocalic Factaral</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="MindSwitcher.html"
                         title="next chapter">Mind Switcher</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/1electronicStation/OneLineDrawing.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/1electronicStation/OneLineDrawing.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -79,7 +77,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body" role="main">
+          <div class="body">
             
   <div class="section" id="one-line-drawing">
 <h1>One Line Drawing<a class="headerlink" href="#one-line-drawing" title="Permalink to this headline">¶</a></h1>
@@ -103,60 +101,54 @@
 </div>
 </div></blockquote>
 <p><strong>Solution:</strong></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-
-<span class="k">def</span> <span class="nf">isconnect</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">pdict</span><span class="p">):</span>
-    <span class="n">visited</span><span class="p">,</span> <span class="n">to_search</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([]),</span> <span class="p">{</span><span class="n">p1</span><span class="p">,}</span>
-    <span class="k">while</span> <span class="n">to_search</span> <span class="ow">and</span> <span class="p">(</span><span class="n">p2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">):</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([])</span>
-        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">to_search</span><span class="p">:</span>
-            <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-            <span class="n">temp</span> <span class="o">|=</span> <span class="n">pdict</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
-        <span class="n">to_search</span> <span class="o">=</span> <span class="n">temp</span>
-    <span class="k">return</span> <span class="n">p2</span> <span class="ow">in</span> <span class="n">to_search</span>
-
-<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">segments</span><span class="p">):</span>
-    <span class="n">pdict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
-        <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">seg</span><span class="p">[:</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">seg</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
-        <span class="n">pdict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="nb">set</span><span class="p">([]))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p2</span><span class="p">)</span>
-        <span class="n">pdict</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span> <span class="nb">set</span><span class="p">([]))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span>
-
-    <span class="n">oddp</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pdict</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdict</span><span class="p">[</span><span class="n">p</span><span class="p">])</span><span class="o">%</span><span class="mi">2</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">oddp</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">oddp</span><span class="p">)</span><span class="o">!=</span><span class="mi">2</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">[]</span>
-    <span class="k">elif</span> <span class="n">oddp</span><span class="p">:</span>
-        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">oddp</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">pdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pdict</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
-    <span class="k">while</span> <span class="n">segments</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">])</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">nextp</span> <span class="o">=</span> <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">nextp</span> <span class="ow">in</span> <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]:</span>
-                <span class="k">if</span> <span class="n">nextp</span><span class="o">==</span><span class="n">end</span><span class="p">:</span> <span class="k">continue</span>
-                <span class="n">tempdict</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">pdict</span><span class="p">)</span>
-                <span class="n">tempdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
-                <span class="n">tempdict</span><span class="p">[</span><span class="n">nextp</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">isconnect</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">tempdict</span><span class="p">):</span>
-                    <span class="n">pdict</span><span class="p">[</span><span class="n">start</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
-                    <span class="k">break</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">segments</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">nextp</span><span class="p">)))</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">segments</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">start</span><span class="p">)))</span>
-
-        <span class="n">pdict</span><span class="p">[</span><span class="n">nextp</span><span class="p">]</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
-        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nextp</span><span class="p">)</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">nextp</span>
-
-    <span class="k">return</span> <span class="n">path</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 </pre></div>
 </div>
+<dl class="docutils">
+<dt>​</dt>
+<dd><dl class="first last docutils">
+<dt>def draw(segments):</dt>
+<dd><p class="first">d = len(segments)</p>
+<dl class="docutils">
+<dt>if d == 1:</dt>
+<dd>seg = segments.pop()
+return (tuple(seg[:2]), tuple(seg[2:]))</dd>
+</dl>
+<p>pdict = {}
+for seg in segments:</p>
+<blockquote>
+<div>p1, p2 = tuple(seg[:2]), tuple(seg[2:])
+pdict.setdefault(p1, set([])).add(p2)
+pdict.setdefault(p2, set([])).add(p1)</div></blockquote>
+<p>oddp = [p for p in pdict if len(pdict[p])%2]
+if oddp and len(oddp) != 2:</p>
+<blockquote>
+<div>return []</div></blockquote>
+<dl class="docutils">
+<dt>elif oddp:</dt>
+<dd>start, end = oddp</dd>
+<dt>else:</dt>
+<dd>start, end = pdict.keys()[0], pdict.keys()[0]</dd>
+</dl>
+<p>to_search = deque([(start, p)] for p in pdict[start])
+while to_search:</p>
+<blockquote class="last">
+<div><p>cur_s = to_search.popleft()
+cur_p = cur_s[-1][1]
+for p in pdict[cur_p]:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if p == end and len(cur_s) == d-1:</dt>
+<dd>return [e[0] for e in cur_s] + [cur_p, p]</dd>
+<dt>elif (cur_p, p) not in cur_s and (p, cur_p) not in cur_s:</dt>
+<dd>to_search.appendleft(cur_s + [(cur_p, p)])</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
 </div>
 
 
@@ -165,7 +157,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -175,15 +167,15 @@
           <a href="MindSwitcher.html" title="Mind Switcher"
              >next</a> |</li>
         <li class="right" >
-          <a href="Brackets.html" title="Brackets"
+          <a href="UnivocalicFactaral.html" title="Univocalic Factaral"
              >previous</a> |</li>
         <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
           <li><a href="0toctree.html" >ELECTRONIC STATION</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer" role="contentinfo">
+    <div class="footer">
         &copy; Copyright 2014, bukebuer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

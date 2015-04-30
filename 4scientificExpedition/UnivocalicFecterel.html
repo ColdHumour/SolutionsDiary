@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MINE &mdash; checkio 1.0 documentation</title>
+    <title>Univocalic Fecterel &mdash; checkio 1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,8 +24,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
-    <link rel="next" title="Super Root" href="SuperRoot.html" />
-    <link rel="prev" title="Dark Labyrinth" href="../2incinerator/DarkLabyrinth.html" /> 
+    <link rel="up" title="SCIENTIFIC EXPEDITION" href="0toctree.html" />
+    <link rel="next" title="Loading Cargo" href="LoadingCargo.html" />
+    <link rel="prev" title="SCIENTIFIC EXPEDITION" href="0toctree.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,25 +36,26 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="SuperRoot.html" title="Super Root"
+          <a href="LoadingCargo.html" title="Loading Cargo"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../2incinerator/DarkLabyrinth.html" title="Dark Labyrinth"
+          <a href="0toctree.html" title="SCIENTIFIC EXPEDITION"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">SCIENTIFIC EXPEDITION</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../2incinerator/DarkLabyrinth.html"
-                        title="previous chapter">Dark Labyrinth</a></p>
+  <p class="topless"><a href="0toctree.html"
+                        title="previous chapter">SCIENTIFIC EXPEDITION</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="SuperRoot.html"
-                        title="next chapter">Super Root</a></p>
+  <p class="topless"><a href="LoadingCargo.html"
+                        title="next chapter">Loading Cargo</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/3mine/0toctree.txt"
+    <li><a href="../_sources/4scientificExpedition/UnivocalicFecterel.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -77,20 +79,23 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="mine">
-<h1>MINE<a class="headerlink" href="#mine" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="SuperRoot.html">Super Root</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RepeatingDecimals.html">Repeating Decimals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MagicSquare.html">Magic Square</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HexagonSpiral.html">Hexagon Spiral</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FamilyGifts.html">Family Gifts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExpectedDice.html">Expected Dice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PalindromicPalindrome.html">Palindromic Palindrome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ForgetfulPrisoner.html">Forgetful Prisoner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SupplyStations.html">Supply Stations</a></li>
-</ul>
+  <div class="section" id="univocalic-fecterel">
+<h1>Univocalic Fecterel<a class="headerlink" href="#univocalic-fecterel" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/univocalic-fecterel/">task_UnivocalicFecterel</a></p>
+<p>In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n.</p>
+<p>Write a function named &#8220;e_fecterel&#8221; which calculates the factorial without using these letters in code: &#8220;aiou&#8221;.</p>
+<p><strong>Input:</strong> A number as integer.</p>
+<p><strong>Output:</strong> The factorial as an integer.</p>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">0 ≤ n &lt; 100</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">x</span><span class="o">=</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:(</span><span class="n">n</span><span class="o">&gt;</span><span class="mi">1</span><span class="ow">and</span> <span class="n">n</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">+</span><span class="p">(</span><span class="n">n</span><span class="o">&lt;</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">a_factaral</span><span class="o">=</span><span class="n">x</span>
+</pre></div>
 </div>
 </div>
 
@@ -107,12 +112,13 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="SuperRoot.html" title="Super Root"
+          <a href="LoadingCargo.html" title="Loading Cargo"
              >next</a> |</li>
         <li class="right" >
-          <a href="../2incinerator/DarkLabyrinth.html" title="Dark Labyrinth"
+          <a href="0toctree.html" title="SCIENTIFIC EXPEDITION"
              >previous</a> |</li>
-        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >SCIENTIFIC EXPEDITION</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

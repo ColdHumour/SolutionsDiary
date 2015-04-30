@@ -7,6 +7,8 @@ MINE
     RepeatingDecimals.rst
     MagicSquare.rst
     HexagonSpiral.rst
+    FamilyGifts.rst
     ExpectedDice.rst
+    PalindromicPalindrome.rst
     ForgetfulPrisoner.rst
     SupplyStations.rst

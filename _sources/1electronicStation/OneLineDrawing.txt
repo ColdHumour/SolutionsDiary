@@ -33,19 +33,15 @@ You should find a path in order to draw the figure. You can pass through each se
 
 .. code-block:: python
 
-    from copy import deepcopy
-
-    def isconnect(p1, p2, pdict):
-        visited, to_search = set([]), {p1,}
-        while to_search and (p2 not in to_search):
-            temp = set([])
-            for p in to_search:
-                visited.add(p)
-                temp |= pdict[p]
-            to_search = temp
-        return p2 in to_search
-
+    from collections import deque
+​
     def draw(segments):
+        d = len(segments)
+        
+        if d == 1:
+            seg = segments.pop()
+            return (tuple(seg[:2]), tuple(seg[2:]))
+        
         pdict = {}
         for seg in segments:
             p1, p2 = tuple(seg[:2]), tuple(seg[2:])
@@ -53,35 +49,19 @@ You should find a path in order to draw the figure. You can pass through each se
             pdict.setdefault(p2, set([])).add(p1)
         
         oddp = [p for p in pdict if len(pdict[p])%2]
-        
-        if oddp and len(oddp)!=2: 
+        if oddp and len(oddp) != 2: 
             return []
         elif oddp:
             start, end = oddp 
         else:    
             start, end = pdict.keys()[0], pdict.keys()[0]
             
-        path = [start]
-        while segments:
-            if len(pdict[start])==1:
-                nextp = pdict[start].pop()
-            else:
-                for nextp in pdict[start]:
-                    if nextp==end: continue                
-                    tempdict = deepcopy(pdict)
-                    tempdict[start].remove(nextp)
-                    tempdict[nextp].remove(start)
-                    if isconnect(start, end, tempdict):
-                        pdict[start].remove(nextp)
-                        break
-            
-            try:
-                segments.remove(tuple(list(start)+list(nextp)))
-            except:
-                segments.remove(tuple(list(nextp)+list(start)))
-            
-            pdict[nextp].remove(start)
-            path.append(nextp)
-            start = nextp
-            
-        return path
+        to_search = deque([(start, p)] for p in pdict[start])
+        while to_search:
+            cur_s = to_search.popleft()
+            cur_p = cur_s[-1][1]
+            for p in pdict[cur_p]:
+                if p == end and len(cur_s) == d-1:
+                    return [e[0] for e in cur_s] + [cur_p, p]
+                elif (cur_p, p) not in cur_s and (p, cur_p) not in cur_s:
+                    to_search.appendleft(cur_s + [(cur_p, p)])

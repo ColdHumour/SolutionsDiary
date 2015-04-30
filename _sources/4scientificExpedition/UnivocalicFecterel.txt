@@ -1,0 +1,25 @@
+Univocalic Fecterel
+====================
+
+task_UnivocalicFecterel_
+
+.. _task_UnivocalicFecterel: http://www.checkio.org/mission/univocalic-fecterel/
+
+In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n.
+
+Write a function named "e_fecterel" which calculates the factorial without using these letters in code: "aiou".
+
+**Input:** A number as integer.
+
+**Output:** The factorial as an integer.
+
+**Precondition:** 
+
+    | 0 ≤ n < 100
+
+**Solution:**
+
+.. code-block:: python
+
+    x=lambda n:(n>1and n*x(n-1))+(n<2)
+    a_factaral=x

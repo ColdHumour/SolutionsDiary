@@ -4,6 +4,7 @@ ELECTRONIC STATION
 .. toctree::
     
     Brackets.rst
+    UnivocalicFactaral.rst
     OneLineDrawing.rst
     MindSwitcher.rst
     Simplification.rst

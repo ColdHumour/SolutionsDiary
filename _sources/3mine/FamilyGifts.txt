@@ -1,0 +1,113 @@
+Family Gifts
+=============================
+
+task_FamilyGifts_
+
+.. _task_FamilyGifts: http://www.checkio.org/mission/family-gifts/
+
+Every Christmas in my family, each of us gives a present to only one other person. To organize who should offer a gift to whom (I call it the chain of presents), we introduced a few rules:
+
+- There should be a single chain where every person in the family is present,
+- Couples should not give to one another,
+- Every person should give a gift to a different person than they had in previous years
+
+So the problem would be to find and list the longest list of chains of presents. For example in a family {a,b,c,d} with couples=({a,b},{c,d}): [[a,c,b,d],[a,d,b,c]].
+
+You are given a set of family member names and a list of couples in this family. Find the maximum number of chains with all family members. Gift chains should be represented as a list of names where i-th gives a present to i+1-th and the last person in the list to the first.
+
+**Input:** Names of family members as a set of strings. Couple list as a tuple of sets with two strings in each.
+
+**Output:** The longest list of gift chains as a list/tuple of lists/tuples with strings.
+
+**Example:**
+
+.. code-block:: python
+
+    find_chains({'Gary', 'Jeanette', 'Hollie'}, ({'Gary', 'Jeanette'},) # 0 chains
+    find_chains, {'Curtis', 'Lee', 'Rachel', 'Javier'}, ({'Rachel', 'Javier'}, {'Curtis', 'Lee'}) # 2 chains
+
+**Precondition:** 
+
+    | len(couples) <= 7
+
+**Solution:**
+
+.. code-block:: python
+
+    from collections import deque
+    from random import shuffle
+    from copy import deepcopy
+
+    def hybrid_search(matrix):
+        n = len(matrix)
+        
+        # Heuristic Search
+        chain = [0]
+        while len(chain) < n:
+            cur_length = len(chain)
+
+            if cur_length == n: 
+                return chain
+            elif cur_length > 1:
+                z, a = chain[-2:]
+                search_order = range(z, n) + range(z)
+            else:
+                a, search_order = chain[-1], range(n)
+            
+            for b in search_order:
+                if b not in chain and matrix[a][b]:
+                    if cur_length == n-1 and matrix[b][0]:
+                        return chain+[b]
+                    elif cur_length < n-1:
+                        chain.append(b)
+                    break
+
+            if cur_length == len(chain): break
+        
+        # Depth-First Search
+        visited, to_search = [chain[:-1]], deque([[0]])
+        while to_search:
+            chain = to_search.popleft()
+            a, c, candidates = chain[-1], chain[0], range(n)
+            shuffle(candidates)
+            for b in candidates:
+                if b not in chain and matrix[a][b] and chain+[b] not in visited:
+                    if len(chain) == n-1 and matrix[b][c]:
+                        return chain+[b]
+                    elif len(chain) < n-1:
+                        to_search.appendleft(chain+[b])
+            visited.append(chain)
+
+    def find_chains(family, couples):
+        n = len(family)
+        fam2idx = dict(zip(list(family), range(n)))
+        idx2fam = dict(zip(range(n), list(family)))
+
+        rmatrix = [[0]*n for _ in range(n)]
+        for i in range(n-1):
+            for j in range(i+1, n):
+                rmatrix[i][j] = rmatrix[j][i] = 1
+        for a,b in couples:
+            ia, ib = fam2idx[a], fam2idx[b]
+            rmatrix[ia][ib] = rmatrix[ib][ia] = 0
+        
+        chainlist = []
+        max_c = sum(sum(r) for r in rmatrix) / n
+        for _ in range(20):
+            templist = []
+            matrix = deepcopy(rmatrix)
+            for _ in range(max_c):
+                chain = hybrid_search(matrix)
+                if chain:
+                    templist.append(map(idx2fam.get, chain))
+                    for i,p in enumerate(chain):
+                        matrix[chain[i-1]][p] = 0
+                else:
+                    break
+            
+            if len(templist) > len(chainlist):
+                chainlist = templist
+            if len(chainlist) == max_c:
+                return chainlist
+        
+        return chainlist

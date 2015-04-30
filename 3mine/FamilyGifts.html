@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Family Gifts &mdash; checkio 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Expected Dice" href="ExpectedDice.html" />
+    <link rel="prev" title="Hexagon Spiral" href="HexagonSpiral.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="HexagonSpiral.html"
+                        title="previous chapter">Hexagon Spiral</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ExpectedDice.html"
+                        title="next chapter">Expected Dice</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/3mine/FamilyGifts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="family-gifts">
+<h1>Family Gifts<a class="headerlink" href="#family-gifts" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/family-gifts/">task_FamilyGifts</a></p>
+<p>Every Christmas in my family, each of us gives a present to only one other person. To organize who should offer a gift to whom (I call it the chain of presents), we introduced a few rules:</p>
+<ul class="simple">
+<li>There should be a single chain where every person in the family is present,</li>
+<li>Couples should not give to one another,</li>
+<li>Every person should give a gift to a different person than they had in previous years</li>
+</ul>
+<p>So the problem would be to find and list the longest list of chains of presents. For example in a family {a,b,c,d} with couples=({a,b},{c,d}): [[a,c,b,d],[a,d,b,c]].</p>
+<p>You are given a set of family member names and a list of couples in this family. Find the maximum number of chains with all family members. Gift chains should be represented as a list of names where i-th gives a present to i+1-th and the last person in the list to the first.</p>
+<p><strong>Input:</strong> Names of family members as a set of strings. Couple list as a tuple of sets with two strings in each.</p>
+<p><strong>Output:</strong> The longest list of gift chains as a list/tuple of lists/tuples with strings.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">find_chains</span><span class="p">({</span><span class="s">&#39;Gary&#39;</span><span class="p">,</span> <span class="s">&#39;Jeanette&#39;</span><span class="p">,</span> <span class="s">&#39;Hollie&#39;</span><span class="p">},</span> <span class="p">({</span><span class="s">&#39;Gary&#39;</span><span class="p">,</span> <span class="s">&#39;Jeanette&#39;</span><span class="p">},)</span> <span class="c"># 0 chains</span>
+<span class="n">find_chains</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;Curtis&#39;</span><span class="p">,</span> <span class="s">&#39;Lee&#39;</span><span class="p">,</span> <span class="s">&#39;Rachel&#39;</span><span class="p">,</span> <span class="s">&#39;Javier&#39;</span><span class="p">},</span> <span class="p">({</span><span class="s">&#39;Rachel&#39;</span><span class="p">,</span> <span class="s">&#39;Javier&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;Curtis&#39;</span><span class="p">,</span> <span class="s">&#39;Lee&#39;</span><span class="p">})</span> <span class="c"># 2 chains</span>
+</pre></div>
+</div>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">len(couples) &lt;= 7</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="k">def</span> <span class="nf">hybrid_search</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+
+    <span class="c"># Heuristic Search</span>
+    <span class="n">chain</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">cur_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">cur_length</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">chain</span>
+        <span class="k">elif</span> <span class="n">cur_length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">z</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+            <span class="n">search_order</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="nb">range</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">search_order</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">search_order</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">b</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chain</span> <span class="ow">and</span> <span class="n">matrix</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">cur_length</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">matrix</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">chain</span><span class="o">+</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="n">cur_length</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">chain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">cur_length</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">chain</span><span class="p">):</span> <span class="k">break</span>
+
+    <span class="c"># Depth-First Search</span>
+    <span class="n">visited</span><span class="p">,</span> <span class="n">to_search</span> <span class="o">=</span> <span class="p">[</span><span class="n">chain</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">deque</span><span class="p">([[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">while</span> <span class="n">to_search</span><span class="p">:</span>
+        <span class="n">chain</span> <span class="o">=</span> <span class="n">to_search</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">candidates</span> <span class="o">=</span> <span class="n">chain</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">chain</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">shuffle</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">b</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">chain</span> <span class="ow">and</span> <span class="n">matrix</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="ow">and</span> <span class="n">chain</span><span class="o">+</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">matrix</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="n">chain</span><span class="o">+</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                    <span class="n">to_search</span><span class="o">.</span><span class="n">appendleft</span><span class="p">(</span><span class="n">chain</span><span class="o">+</span><span class="p">[</span><span class="n">b</span><span class="p">])</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chain</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">find_chains</span><span class="p">(</span><span class="n">family</span><span class="p">,</span> <span class="n">couples</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">family</span><span class="p">)</span>
+    <span class="n">fam2idx</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">family</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+    <span class="n">idx2fam</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">family</span><span class="p">)))</span>
+
+    <span class="n">rmatrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">rmatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">rmatrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="n">couples</span><span class="p">:</span>
+        <span class="n">ia</span><span class="p">,</span> <span class="n">ib</span> <span class="o">=</span> <span class="n">fam2idx</span><span class="p">[</span><span class="n">a</span><span class="p">],</span> <span class="n">fam2idx</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
+        <span class="n">rmatrix</span><span class="p">[</span><span class="n">ia</span><span class="p">][</span><span class="n">ib</span><span class="p">]</span> <span class="o">=</span> <span class="n">rmatrix</span><span class="p">[</span><span class="n">ib</span><span class="p">][</span><span class="n">ia</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">chainlist</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">max_c</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rmatrix</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">templist</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">rmatrix</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_c</span><span class="p">):</span>
+            <span class="n">chain</span> <span class="o">=</span> <span class="n">hybrid_search</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">chain</span><span class="p">:</span>
+                <span class="n">templist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">idx2fam</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">chain</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">chain</span><span class="p">):</span>
+                    <span class="n">matrix</span><span class="p">[</span><span class="n">chain</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">templist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">chainlist</span><span class="p">):</span>
+            <span class="n">chainlist</span> <span class="o">=</span> <span class="n">templist</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">chainlist</span><span class="p">)</span> <span class="o">==</span> <span class="n">max_c</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">chainlist</span>
+
+    <span class="k">return</span> <span class="n">chainlist</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ExpectedDice.html" title="Expected Dice"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="HexagonSpiral.html" title="Hexagon Spiral"
+             >previous</a> |</li>
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, bukebuer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>MINE &mdash; checkio 1.0 documentation</title>
+    <title>Palindromic Palindrome &mdash; checkio 1.0 documentation</title>
     
     <link rel="stylesheet" href="../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,8 +24,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="checkio 1.0 documentation" href="../index.html" />
-    <link rel="next" title="Super Root" href="SuperRoot.html" />
-    <link rel="prev" title="Dark Labyrinth" href="../2incinerator/DarkLabyrinth.html" /> 
+    <link rel="up" title="MINE" href="0toctree.html" />
+    <link rel="next" title="Forgetful Prisoner" href="ForgetfulPrisoner.html" />
+    <link rel="prev" title="Expected Dice" href="ExpectedDice.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,25 +36,26 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="SuperRoot.html" title="Super Root"
+          <a href="ForgetfulPrisoner.html" title="Forgetful Prisoner"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../2incinerator/DarkLabyrinth.html" title="Dark Labyrinth"
+          <a href="ExpectedDice.html" title="Expected Dice"
              accesskey="P">previous</a> |</li>
-        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" accesskey="U">MINE</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../2incinerator/DarkLabyrinth.html"
-                        title="previous chapter">Dark Labyrinth</a></p>
+  <p class="topless"><a href="ExpectedDice.html"
+                        title="previous chapter">Expected Dice</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="SuperRoot.html"
-                        title="next chapter">Super Root</a></p>
+  <p class="topless"><a href="ForgetfulPrisoner.html"
+                        title="next chapter">Forgetful Prisoner</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/3mine/0toctree.txt"
+    <li><a href="../_sources/3mine/PalindromicPalindrome.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -77,20 +79,25 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="mine">
-<h1>MINE<a class="headerlink" href="#mine" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="SuperRoot.html">Super Root</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RepeatingDecimals.html">Repeating Decimals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MagicSquare.html">Magic Square</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HexagonSpiral.html">Hexagon Spiral</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FamilyGifts.html">Family Gifts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ExpectedDice.html">Expected Dice</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PalindromicPalindrome.html">Palindromic Palindrome</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ForgetfulPrisoner.html">Forgetful Prisoner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SupplyStations.html">Supply Stations</a></li>
-</ul>
+  <div class="section" id="palindromic-palindrome">
+<h1>Palindromic Palindrome<a class="headerlink" href="#palindromic-palindrome" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.checkio.org/mission/palindromic-palindrome/">task_PalindromicPalindrome</a></p>
+<p>Write a palindromic program with a checkio(s) function that checks whether s (a string) is a palindrome.</p>
+<p>For this task, using &#8220;#&#8221; is forbidden.</p>
+<p>You can use other methods for the function&#8217;s definition (for example a lambda). The test will try to run the function &#8220;checkio&#8221; from your code.</p>
+<p>However, in your code, you can not use &#8220;#&#8221;.</p>
+<p><strong>Input:</strong> A text as a string.</p>
+<p><strong>Output:</strong> Palindrome or not as a boolean.</p>
+<p><strong>Precondition:</strong></p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">1 &lt; <a href="#id1"><span class="problematic" id="id2">|text|</span></a> ≤ 20</div>
+<div class="line">The text contains only ASCII letters in lowercase.</div>
+</div>
+</div></blockquote>
+<p><strong>Solution:</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">&#39;p</span><span class="se">\&#39;</span><span class="s">;]1-::[s==s:s adbmal = oikcehc;&#39;</span><span class="p">;</span><span class="n">checkio</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">==</span><span class="n">s</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span><span class="s">&#39;\p&#39;</span>
+</pre></div>
 </div>
 </div>
 
@@ -107,12 +114,13 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="SuperRoot.html" title="Super Root"
+          <a href="ForgetfulPrisoner.html" title="Forgetful Prisoner"
              >next</a> |</li>
         <li class="right" >
-          <a href="../2incinerator/DarkLabyrinth.html" title="Dark Labyrinth"
+          <a href="ExpectedDice.html" title="Expected Dice"
              >previous</a> |</li>
-        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li> 
+        <li><a href="../index.html">checkio 1.0 documentation</a> &raquo;</li>
+          <li><a href="0toctree.html" >MINE</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
